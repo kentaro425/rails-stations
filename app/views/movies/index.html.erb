@@ -1,0 +1,15 @@
+<section class="movie">
+  <dev class="movie_list">
+    <dev class="movie__list__wrap">
+    <% @movies.each do |movie| %>
+      <dev class="movie__list__wrap__card">
+        <%= image_tag movie.image_url, class: "image" %>
+        <p class="title"><%= movie.name %></p>
+        <button class="button">
+          <p>予約/詳細</p>
+        </button>
+      </dev>
+    <% end %>
+    </dev>
+  </dev>
+</section>
