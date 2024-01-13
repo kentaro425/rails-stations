@@ -2,9 +2,11 @@ class Admin::MoviesController < ApplicationController
   def index
     @movies = Movie.all.page(params[:page]).per(15)
   end
+
   def new
     @movie = Movie.new
   end
+
   def create
     @movie = Movie.new(movie_params)
     if @movie.save
@@ -14,6 +16,7 @@ class Admin::MoviesController < ApplicationController
       render :new
     end
   end
+
   def edit
     @movie = Movie.find(params[:id])
   end
@@ -27,6 +30,13 @@ class Admin::MoviesController < ApplicationController
       render :edit
     end
   end
+
+  def destroy
+    @movie = Movie.find(params[:id])
+    @movie.destroy
+    redirect_to admin_movies_path, notice: "映画を削除しました"
+  end
+
   private
 
   def movie_params
