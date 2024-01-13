@@ -12,7 +12,7 @@ body {
     &__wrap {
       display: flex;
       flex-wrap: wrap;
-      justify-content: space-around;
+      justify-content: flex-start;
       &__card {
         margin: 1% 2%;
         width: 20%;
