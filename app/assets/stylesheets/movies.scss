@@ -1,0 +1,38 @@
+// Place all the styles related to the movies controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+body {
+  margin: 0;
+  padding: 0;
+}
+.movie {
+  background-color: azure;
+  padding: 10%;
+  &__list {
+    &__wrap {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      &__card {
+        margin: 1% 2%;
+        width: 20%;
+        background-color: #fff;
+        box-shadow: #000 2px 2px 5px;
+        .image {
+          width: 100%;
+        }
+        .title {
+          margin: 5%;
+        }
+        .button {
+          margin: 5%;
+          color: #fff;
+          background-color: #13a0a0;
+          > p {
+            margin: 5% 0;
+          }
+        }
+      }
+    }
+  }
+}
