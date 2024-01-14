@@ -1,0 +1,93 @@
+// Place all the styles related to the movies controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+body {
+  margin: 0;
+  padding: 0;
+}
+.movie {
+  background-color: #f2fcfe;
+  padding: 10%;
+  &__list {
+    &__wrap {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      &__card {
+        margin: 1% 2%;
+        width: 20%;
+        background-color: #fff;
+        box-shadow: #000 2px 2px 5px;
+        .image {
+          width: 100%;
+        }
+        .title {
+          margin: 5%;
+        }
+        .button {
+          margin: 5%;
+          color: #fff;
+          background-color: #13a0a0;
+          > p {
+            margin: 5% 0;
+          }
+        }
+      }
+    }
+  }
+}
+
+.movie-detail {
+  background-color: #f2fcfe;
+  width: 90%;
+  display: block;
+  margin: 0 auto;
+  padding: 5% 0;
+  &__wrap {
+    display: flex;
+    justify-content: center;
+    &__image {
+      width: 40%;
+      padding: 2%;
+      .image {
+        width: 100%;
+      }
+    }
+    &__info {
+      width: 40%;
+      text-align: center;
+      padding: 2%;
+      .title__wrap {
+        display: flex;
+        .active {
+          width: 30%;
+          background-color: #ffc108;
+          color: #fff;
+        }
+        .inactive {
+          width: 30%;
+          background-color: #eb6464;
+          color: #fff;
+        }
+        .title {
+          width: 70%;
+        }
+      }
+      .release-date {
+        margin: 5% 0;
+        display: block;
+      }
+      .description {
+        margin: 5% 0;
+      }
+    }
+  }
+  &__schedule__wrap {
+    text-align: center;
+    margin-top: 5%;
+    .schedule-title {
+    }
+    .schedules {
+    }
+  }
+}
