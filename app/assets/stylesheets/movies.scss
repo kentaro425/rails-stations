@@ -6,7 +6,7 @@ body {
   padding: 0;
 }
 .movie {
-  background-color: azure;
+  background-color: #f2fcfe;
   padding: 10%;
   &__list {
     &__wrap {
@@ -33,6 +33,61 @@ body {
           }
         }
       }
+    }
+  }
+}
+
+.movie-detail {
+  background-color: #f2fcfe;
+  width: 90%;
+  display: block;
+  margin: 0 auto;
+  padding: 5% 0;
+  &__wrap {
+    display: flex;
+    justify-content: center;
+    &__image {
+      width: 40%;
+      padding: 2%;
+      .image {
+        width: 100%;
+      }
+    }
+    &__info {
+      width: 40%;
+      text-align: center;
+      padding: 2%;
+      .title__wrap {
+        display: flex;
+        .active {
+          width: 30%;
+          background-color: #ffc108;
+          color: #fff;
+        }
+        .inactive {
+          width: 30%;
+          background-color: #eb6464;
+          color: #fff;
+        }
+        .title {
+          width: 70%;
+        }
+      }
+      .release-date {
+        margin: 5% 0;
+        display: block;
+      }
+      .description {
+        margin: 5% 0;
+      }
+    }
+  }
+  &__schedule__wrap {
+    text-align: center;
+    margin-top: 5%;
+    .schedule-title {
+    }
+    .schedules {
     }
   }
 }
