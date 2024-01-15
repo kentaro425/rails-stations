@@ -1,0 +1,44 @@
+<dev class="movie-detail">
+  <dev class="movie-detail__wrap">
+    <dev class="movie-detail__wrap__image">
+      <%= image_tag @movie.image_url, class: "image" %>
+    </dev>
+    <dev class="movie-detail__wrap__info">
+      <dev class=title__wrap>
+        <dev class="<%= @movie.is_showing ? "active" : "inactive" %>">
+          <%= @movie.is_showing ? "公開中" : "終演" %>
+        </dev>
+        <dev class="title">
+          <h2><%= @movie.name %></h2>
+        </dev>
+      </dev>
+      <dev class="release-date">
+        <%= "公開年：#{@movie.year.to_s}、上映時間：#{@schedules.empty? ? "" : @schedules.first.duration}" %>
+      </dev>
+      <dev class="description">
+        <%= @movie.description %>
+      </dev>
+    </dev>
+  </dev>
+  <dev class="movie-detail__schedule__wrap">
+    <dev class="schedule-title">
+      <h3>上映スケジュール</h3>
+    </dev>
+    <% if request.path.include?("admin") %>
+      <%= link_to new_admin_movie_schedule_path(@movie) do %>
+        <button>新規</button>
+      <% end %>
+    <% end %>
+    <dev class="schedeles">
+      <% @schedules.each do |schedule| %>
+        <% if request.path.include?("admin") %>
+          <dev class="release-date">
+            <p><%= link_to "#{schedule.start_time.strftime('%Y年%m月%d日 %H:%M')}~#{schedule.end_time.strftime('%H:%M')}", edit_admin_schedule_path(schedule) %></p>
+          </dev>
+        <% else %>
+          <p><%= "#{schedule.start_time.strftime('%Y年%m月%d日 %H:%M')}~#{schedule.end_time.strftime('%H:%M')}" %></p>
+        <% end %>
+      <% end %>
+    </dev>
+  </dev>
+</dev>
