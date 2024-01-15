@@ -13,7 +13,7 @@
         </dev>
       </dev>
       <dev class="release-date">
-        <%= "公開年：#{@movie.year.to_s}、上映時間：#{@schedules.first.duration}" %>
+        <%= "公開年：#{@movie.year.to_s}、上映時間：#{@schedules.empty? ? "" : @schedules.first.duration}" %>
       </dev>
       <dev class="description">
         <%= @movie.description %>
@@ -24,9 +24,20 @@
     <dev class="schedule-title">
       <h3>上映スケジュール</h3>
     </dev>
+    <% if request.path.include?("admin") %>
+      <%= link_to new_admin_movie_schedule_path(@movie) do %>
+        <button>新規</button>
+      <% end %>
+    <% end %>
     <dev class="schedeles">
       <% @schedules.each do |schedule| %>
-        <p><%= "#{schedule.start_time.strftime('%Y年%m月%d日 %H:%M')}~#{schedule.end_time.strftime('%H:%M')}" %></p>
+        <% if request.path.include?("admin") %>
+          <dev class="release-date">
+            <p><%= link_to "#{schedule.start_time.strftime('%Y年%m月%d日 %H:%M')}~#{schedule.end_time.strftime('%H:%M')}", edit_admin_schedule_path(schedule) %></p>
+          </dev>
+        <% else %>
+          <p><%= "#{schedule.start_time.strftime('%Y年%m月%d日 %H:%M')}~#{schedule.end_time.strftime('%H:%M')}" %></p>
+        <% end %>
       <% end %>
     </dev>
   </dev>
