@@ -3,6 +3,12 @@ class Admin::MoviesController < ApplicationController
     @movies = Movie.all.page(params[:page]).per(15)
   end
 
+  def show
+    @movie = Movie.find(params[:id])
+    @schedules = @movie.schedules
+    render '/movies/show'
+  end
+
   def new
     @movie = Movie.new
   end
