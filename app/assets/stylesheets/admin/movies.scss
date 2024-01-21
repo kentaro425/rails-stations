@@ -44,6 +44,12 @@
       margin-right: 5px;
     }
   }
+  select {
+    height: 90%;
+    width: 79%;
+    display: inline-block;
+    text-align: left;
+  }
 }
 .movies-list {
   &__table {

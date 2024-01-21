@@ -1,0 +1,58 @@
+<h2>予約作成</h2>
+<%= form_with(model: @reservation, url: admin_reservations_path, class: "movie-form") do |f| %>
+  <div class="field">
+    <%= f.label :name, "予約者氏名", class: "label" %>
+    <%= f.text_field :name, class: "value" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :email, "予約者Email", class: "label" %>
+    <%= f.text_field :email, class: "value" %>
+  </div>
+  <div class="field">
+    <%= f.label :movie_id, "予約映画タイトル", class: "label" %>
+    <%= f.collection_select :movie_id, @movies, :id, :name, class: "value" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :date, "予約日", class: "label" %>
+    <%= custom_date_select(f, :date, start_date: Date.today, end_date: Date.today + 7.days, prompt: "日付を選択してください", class: "value") %>
+  </div>
+  <div class="field">
+    <%= f.label :schedule_id, "予約時間", class: "label" %>
+    <%= f.select :schedule_id, options_for_select([], { prompt: "映画を選択してください", class: "value" }), {}, { id: 'schedule_id' } %>
+  </div>
+  <div class="field">
+    <%= f.label :sheet_id, "座席", class: "label" %>
+    <%= f.number_field :sheet_id, class: "value" %>
+  </div>
+  <div class="actions">
+    <%= link_to "Back", admin_movies_path, class: 'back-btn' %>
+    <%= f.button "Save", class: "save-btn", type: "submit" %>
+  </div>
+<% end %>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const movieSelect = document.getElementById("reservation_movie_id");
+    const scheduleSelect = document.getElementById("schedule_id");
+
+    movieSelect.addEventListener("change", function () {
+      const movieId = movieSelect.value;
+      fetch(`/admin/get_schedules?movie_id=${movieId}`)
+        .then((response) => response.json())
+        .then((data) => {
+          while (scheduleSelect.firstChild) {
+            scheduleSelect.removeChild(scheduleSelect.firstChild);
+          }
+          data.forEach((schedule) => {
+            const option = document.createElement("option");
+            option.value = schedule.id;
+            const startTime = new Date(schedule.start_time);
+            const formattedTime = startTime.toLocaleTimeString('en-US', {hour: '2-digit', minute: '2-digit'});
+            option.textContent = formattedTime;
+            scheduleSelect.appendChild(option);
+          });
+        });
+    });
+  });
+</script>
