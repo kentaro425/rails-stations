@@ -1,0 +1,27 @@
+<section class="movie">
+  <%= form_with(url: movies_path, method: :get) do |form| %>
+    <%= form.text_field :keyword, placeholder: 'キーワード', value: params[:keyword] %>
+    <%= form.radio_button :is_showing, nil, checked: true %>
+    <%= form.label :is_showing_0, 'すべて' %>
+    <%= form.radio_button :is_showing, '1' %>
+    <%= form.label :is_showing_1, '公開中' %>
+    <%= form.radio_button :is_showing, '0' %>
+    <%= form.label :is_showing_0, '公開予定' %>
+    <%= form.submit '検索' %>
+  <% end %>
+  <dev class="movie_list">
+    <dev class="movie__list__wrap">
+    <% @movies.each do |movie| %>
+      <dev class="movie__list__wrap__card">
+        <%= image_tag movie.image_url, class: "image" %>
+        <p class="title"><%= movie.name %></p>
+        <%= link_to movie_path(movie) do %>
+          <button class="button">
+            <p>予約/詳細</p>
+          </button>
+        <% end %>
+      </dev>
+    <% end %>
+    </dev>
+  </dev>
+</section>
