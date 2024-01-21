@@ -25,6 +25,7 @@ class MoviesController < ApplicationController
     @sheets = Sheet.all
     @rows = @sheets.pluck(:row).uniq.sort
     @columns = @sheets.pluck(:column).uniq.sort
+    @reservations = Reservation.where(schedule_id: params[:schedule_id], date: params[:date])
     render '/sheets/index', locals: { schedule_id: params[:schedule_id], date: params[:date], movie_id: params[:movie_id] }
   end
 end
