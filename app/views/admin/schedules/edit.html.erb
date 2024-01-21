@@ -1,7 +1,3 @@
-<% if flash[:alert] %>
-  <div class="alert"><%= flash[:alert] %></div>
-<% end %>
-
 <h2>上映登録</h2>
 <%= form_with(model: @schedule, url: admin_schedule_path(@schedule), method: :patch, class: "movie-form") do |f| %>
   <div class="field">
@@ -11,11 +7,11 @@
 
   <div class="field">
     <%= f.label :start_time, "上映開始時間", class: "label" %>
-    <%= f.datetime_field :start_time, class: "value" %>
+    <%= f.time_select :start_time, class: "value" %>
   </div>
   <div class="field">
     <%= f.label :end_time, "上映終了時間", class: "label" %>
-    <%= f.datetime_field :end_time, class: "value" %>
+    <%= f.time_select :end_time, class: "value" %>
   </div>
 
   <div class="actions">
