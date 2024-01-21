@@ -1,0 +1,60 @@
+// Place all the styles related to the admin::movies controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.movie-form {
+  background-color: #f1e9e9;
+  display: flex;
+  padding: 3% 1%;
+  flex-direction: column;
+  .field {
+    width: 100%;
+    margin: 5px;
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    .label {
+      border: 1px solid #292c32;
+      display: inline-block;
+      width: 15%;
+      padding: 2%;
+    }
+    .value {
+      height: 90%;
+      width: 79%;
+      display: inline-block;
+      text-align: left;
+    }
+  }
+  .actions {
+    margin-left: auto;
+    display: flex;
+    .save-btn {
+      background-color: #0b54e6;
+      color: #f1e9e9;
+      padding: 5%;
+      width: 100px;
+    }
+    .back-btn {
+      background-color: #000;
+      text-decoration: none;
+      color: #f1e9e9;
+      padding: 5%;
+      width: 100px;
+      margin-right: 5px;
+    }
+  }
+  select {
+    height: 90%;
+    width: 79%;
+    display: inline-block;
+    text-align: left;
+  }
+}
+.movies-list {
+  &__table {
+    img {
+      width: 100%;
+    }
+  }
+}

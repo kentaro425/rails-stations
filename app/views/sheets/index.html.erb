@@ -1,0 +1,39 @@
+<div class="screen">スクリーン1</div>
+<div class="sheets">
+  <table border=1>
+    <tr>
+      <th></th>
+      <% @columns.each do |column| %>
+        <th><%= column %></th>
+      <% end %>
+      <th></th>
+    </tr>
+    <% @rows.each do |row| %>
+      <tr>
+        <th><%= row %></th>
+        <% @columns.each do |column| %>
+          <%
+            sheet = @sheets.find { |s| s.column == column && s.row == row }
+            reservation = @reservations.find { |r| r.sheet_id == sheet.id }
+          %>
+          <% if sheet %>
+            <% if reservation.nil? %>
+              <td class="active">
+                <%= link_to new_movie_schedule_reservation_path(movie_id, schedule_id, sheet_id: sheet.id, date: date) do %>
+                  <%#= hidden_field_tag :sheet_id, sheet.id %>
+                  <%#= hidden_field_tag :date, date %>
+                  ⚪︎
+                <% end %>
+              </td>
+            <% else %>
+              <td class="inactive">X</td>
+            <% end %>
+          <% else %>
+            <td></td>
+          <% end %>
+        <% end %>
+        <th><%= row %></th>
+      </tr>
+    <% end %>
+  </table>
+</div>
