@@ -16,4 +16,15 @@ class MoviesController < ApplicationController
     @movie = Movie.find(params[:id])
     @schedules = @movie.schedules
   end
+
+  def reservation
+    if params[:schedule_id].blank? || params[:date].blank?
+      flash[:alert] = "予約情報を入力してください。"
+      redirect_back(fallback_location: movies_path) and return
+    end
+    @sheets = Sheet.all
+    @rows = @sheets.pluck(:row).uniq.sort
+    @columns = @sheets.pluck(:column).uniq.sort
+    render '/sheets/index', locals: { schedule_id: params[:schedule_id], date: params[:date], movie_id: params[:movie_id] }
+  end
 end

@@ -29,11 +29,16 @@
         <button>新規</button>
       <% end %>
     <% end %>
+    <%= form_with(url: movie_reservation_path(@movie), method: :get) do |f| %>
+      <%= custom_date_select(f, :date, start_date: Date.today, end_date: Date.today + 7.days, prompt: "日付を選択してください") %>
+      <%= f.collection_select :schedule_id, @schedules, :id, ->(schedule) { l schedule.start_time, format: :time }, prompt: "時間を選択してください" %>
+      <%= f.button "座席を予約する", type: "submit" %>
+    <% end %>
     <dev class="schedeles">
       <% @schedules.each do |schedule| %>
         <% if request.path.include?("admin") %>
           <dev class="release-date">
-            <p><%= link_to "#{schedule.start_time.strftime('%Y年%m月%d日 %H:%M')}~#{schedule.end_time.strftime('%H:%M')}", edit_admin_schedule_path(schedule) %></p>
+            <p><%= link_to "#{l schedule.start_time}~#{l schedule.end_time, format: :time}", edit_admin_schedule_path(schedule) %></p>
           </dev>
         <% else %>
           <p><%= "#{schedule.start_time.strftime('%Y年%m月%d日 %H:%M')}~#{schedule.end_time.strftime('%H:%M')}" %></p>

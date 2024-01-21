@@ -1,7 +1,3 @@
-<% if flash[:alert] %>
-  <div class="alert"><%= flash[:alert] %></div>
-<% end %>
-
 <h2>Movies Create</h2>
 <%= form_with(model: @movie, url: admin_movies_path, class: "movie-form") do |f| %>
   <div class="field">

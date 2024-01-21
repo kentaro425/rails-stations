@@ -16,8 +16,12 @@
 .notice {
   background-color: #00a000;
   color: #fff;
+  text-align: center;
+  padding: 1%;
 }
 .alert {
-  background-color: #a00000;
+  background-color: #f04949;
   color: #fff;
+  text-align: center;
+  padding: 1%;
 }
