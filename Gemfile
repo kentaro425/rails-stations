@@ -39,6 +39,7 @@ group :development, :test do
   gem "bullet"
   gem 'rails-controller-testing'
   gem 'capybara'
+  gem 'i18n_generators'
 end
 
 group :development do

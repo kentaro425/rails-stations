@@ -1,0 +1,22 @@
+<div class="reservations__form">
+  <h2>ご予約ページ</h2>
+  <%= form_with(model: @reservation) do |f| %>
+    <h3>選択中の映画</h3>
+    <%= @movie.name %>
+    <%= f.hidden_field :movie_id, value: movie_id %>
+    <h3>選択中の日時</h3>
+    <%= date %>
+    <%= f.hidden_field :date, value: date %>
+    <h3>選択中のsheet_id</h3>
+    <%= sheet_id %>
+    <%= f.hidden_field :sheet_id, value: sheet_id %>
+    <h3>選択中のschedule_id</h3>
+    <%= schedule_id %>
+    <%= f.hidden_field :schedule_id, value: schedule_id %>
+    <h3>氏名</h3>
+    <%= f.text_field :name %>
+    <h3>メールアドレス</h3>
+    <%= f.text_field :email %>
+    <%= f.button "予約を確定する", type: "submit" %>
+  <% end %>
+</div>
