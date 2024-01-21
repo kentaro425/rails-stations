@@ -9,5 +9,9 @@
   table {
     width: 80%;
     margin: 0 auto;
+    .inactive {
+      background-color: #8a95ab;
+      color: #fff;
+    }
   }
 }
