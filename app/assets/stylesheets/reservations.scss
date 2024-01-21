@@ -1,0 +1,13 @@
+// Place all the styles related to the reservations controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.reservations {
+  &__form {
+    text-align: center;
+    button {
+      display: block;
+      margin-left: auto;
+    }
+  }
+}

@@ -1,0 +1,22 @@
+<h2>上映登録</h2>
+<%= form_with(model: @schedule, url: admin_schedule_path(@schedule), method: :patch, class: "movie-form") do |f| %>
+  <div class="field">
+    <%= f.label :movie_id, "上映映画ID", class: "label" %>
+    <%= f.number_field :movie_id, class: "value" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :start_time, "上映開始時間", class: "label" %>
+    <%= f.time_select :start_time, class: "value" %>
+  </div>
+  <div class="field">
+    <%= f.label :end_time, "上映終了時間", class: "label" %>
+    <%= f.time_select :end_time, class: "value" %>
+  </div>
+
+  <div class="actions">
+    <%= link_to "Back", admin_movie_path(@schedule.movie_id), class: 'back-btn' %>
+    <%= f.submit "Save", class: "save-btn" %>
+    <%= link_to "Delete", admin_schedule_path(@schedule), method: :delete, data: {confirm: "削除しますか？"}, class: 'back-btn' %>
+  </div>
+<% end %>

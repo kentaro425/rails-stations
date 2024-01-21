@@ -1,0 +1,26 @@
+<dev class=header>
+  <h2>管理画面</h2>
+</dev>
+<section class=movies-list>
+  <h2>映画一覧</h2>
+  <table class="movies-list__table" border=1>
+    <tr>
+      <% Settings.movie.list_all.headers.each do |h| %>
+        <th><%= h %></th>
+      <% end %>
+    </tr>
+    <% @movies.each do |movie| %>
+      <tr>
+          <td><%= link_to movie.id, edit_admin_movie_path(movie) %></td>
+          <td><%= movie.name %></td>
+          <td><%= movie.year %></td>
+          <td><%= movie.is_showing ? "上映中" : "終演" %></td>
+          <td><%= movie.description %></td>
+          <td><%= image_tag movie.image_url %></td>
+          <td><%= movie.created_at.strftime("%Y-%m-%d %H:%M:%S") %></td>
+          <td><%= movie.updated_at.strftime("%Y-%m-%d %H:%M:%S") %></td>
+      </tr>
+    <% end %>
+  </table>
+  <%= paginate @movies %>
+</section>
