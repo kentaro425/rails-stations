@@ -1,4 +1,5 @@
 class MoviesController < ApplicationController
+  before_action :authenticate_user!, only: [:reservation]
   def index
     @movies = Movie.all
     if params[:is_showing] == '1'
