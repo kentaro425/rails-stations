@@ -1,0 +1,2 @@
+#!/bin/sh
+docker-compose exec -T web bundle exec rubocop -c .rubocop.yml "$@"
